@@ -12,8 +12,9 @@ var currentCover;
 
 // Add your event listeners here 👇
 window.addEventListener('load', loadRandomImage);
-document.addEventListener('load', loadRandomTitle);
-document.addEventListener('load', loadRandomTagline);
+window.addEventListener('load', loadRandomTitle);
+window.addEventListener('load', loadRandomTagline);
+
 // Create your event handlers and other functions here 👇
 
 
@@ -33,8 +34,11 @@ function loadRandomTagline() {
   var taglineIndex1 = getRandomIndex(descriptors);
   var taglineIndex2 = getRandomIndex(descriptors);
   coverTagline.innerText = `A tale of ${descriptors[taglineIndex1]} and ${descriptors[taglineIndex2]}`;
-}
+};
 
-loadRandomImage();
-loadRandomTitle();
-loadRandomTagline();
+//modify getRandomIndex function to take multp arrays and loop however many times as there are arrays
+//need to have a unqiye way to store each output
+//pass 3 arrays as arguments to get random index function
+
+//this would allow us to minimize code in each function.. 
+
