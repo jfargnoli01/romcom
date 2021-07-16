@@ -4,6 +4,8 @@ var coverTitle = document.querySelector('.cover-title');
 var coverTagline1 = document.querySelector('.tagline-1');
 var coverTagline2 = document.querySelector('.tagline-2');
 var randomCoverButton = document.querySelector('.random-cover-button');
+var makeNewButton = document.querySelector('.make-new-button');
+var formView = document.querySelector('.form-view');
 
 
 // We've provided a few variables below
@@ -16,6 +18,7 @@ var currentCover;
 window.addEventListener('load', loadRandomCover);
 randomCoverButton.addEventListener('click', loadRandomCover);
 randomCoverButton.addEventListener('click', createCover);
+makeNewButton.addEventListener('click', changeToFormView);
 
 // Create your event handlers and other functions here 👇
 
@@ -49,4 +52,7 @@ function loadRandomCover() {
   loadRandomTitle();
   loadRandomTagline1();
   loadRandomTagline2();
+};
+function changeToFormView() {
+  formView.classList.remove("hidden");
 };
