@@ -6,6 +6,7 @@ var coverTagline2 = document.querySelector('.tagline-2');
 var randomCoverButton = document.querySelector('.random-cover-button');
 var makeNewButton = document.querySelector('.make-new-button');
 var formView = document.querySelector('.form-view');
+var homeView = document.querySelector('.home-view');
 
 
 // We've provided a few variables below
@@ -55,4 +56,5 @@ function loadRandomCover() {
 };
 function changeToFormView() {
   formView.classList.remove("hidden");
+  homeView.classList.add("hidden");
 };
