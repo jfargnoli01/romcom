@@ -2,6 +2,9 @@
 var coverImage = document.querySelector('.cover-image');
 var coverTitle = document.querySelector('.cover-title');
 var coverTagline = document.querySelector('.tagline');
+var coverTagline1 = document.querySelector('.tagline-1');
+var coverTagline2 = document.querySelector('.tagline-2');
+var randomCoverButton = document.querySelector('.random-cover-button');
 
 
 // We've provided a few variables below
@@ -13,7 +16,11 @@ var currentCover;
 // Add your event listeners here 👇
 window.addEventListener('load', loadRandomImage);
 window.addEventListener('load', loadRandomTitle);
-window.addEventListener('load', loadRandomTagline);
+window.addEventListener('load', loadRandomTagline1);
+window.addEventListener('load', loadRandomTagline2);
+randomCoverButton.addEventListener('click', createCover);
+//creat an eventlistener 'load', loadRandomCover 
+//reuse for 'click'
 
 // Create your event handlers and other functions here 👇
 
@@ -30,15 +37,27 @@ function loadRandomTitle() {
   var titlesIndex = getRandomIndex(titles);
   coverTitle.innerText = titles[titlesIndex];
 };
-function loadRandomTagline() {
+function loadRandomTagline1() {
   var taglineIndex1 = getRandomIndex(descriptors);
-  var taglineIndex2 = getRandomIndex(descriptors);
-  coverTagline.innerText = `A tale of ${descriptors[taglineIndex1]} and ${descriptors[taglineIndex2]}`;
+  coverTagline1.innerText = descriptors[taglineIndex1];
 };
+function loadRandomTagline2() {
+  var taglineIndex2 = getRandomIndex(descriptors);
+  coverTagline2.innerText = descriptors[taglineIndex2];
+}
+function createCover() {
+  currentCover = new Cover(coverImage.src, coverTitle.innerText, coverTagline1.innerText, coverTagline2.innerText);
+  console.log(currentCover, "Current Cover");
+};
+// function loadRandomCover() {
+//   loadRandomImage();
+//   loadRandomTitle();
+//   loadRandomTagline();
+// }
+//Every time the user clicks the Show New Random Cover button, a new random cover is created ---> var currentCover; (instance)
+//create an event listener for the Show New Random Cover Button (click, createCover)
 
-//modify getRandomIndex function to take multp arrays and loop however many times as there are arrays
-//need to have a unqiye way to store each output
-//pass 3 arrays as arguments to get random index function
 
-//this would allow us to minimize code in each function.. 
+// hint: you may need to update the value of the provided currentCover variable
+// hint: use that Cover class!
 
