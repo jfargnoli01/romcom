@@ -1,7 +1,6 @@
 // Create variables targetting the relevant DOM elements here 👇
 var coverImage = document.querySelector('.cover-image');
 var coverTitle = document.querySelector('.cover-title');
-var coverTagline = document.querySelector('.tagline');
 var coverTagline1 = document.querySelector('.tagline-1');
 var coverTagline2 = document.querySelector('.tagline-2');
 var randomCoverButton = document.querySelector('.random-cover-button');
@@ -14,13 +13,9 @@ var savedCovers = [
 var currentCover;
 
 // Add your event listeners here 👇
-window.addEventListener('load', loadRandomImage);
-window.addEventListener('load', loadRandomTitle);
-window.addEventListener('load', loadRandomTagline1);
-window.addEventListener('load', loadRandomTagline2);
+window.addEventListener('load', loadRandomCover);
+randomCoverButton.addEventListener('click', loadRandomCover);
 randomCoverButton.addEventListener('click', createCover);
-//creat an eventlistener 'load', loadRandomCover 
-//reuse for 'click'
 
 // Create your event handlers and other functions here 👇
 
@@ -49,15 +44,9 @@ function createCover() {
   currentCover = new Cover(coverImage.src, coverTitle.innerText, coverTagline1.innerText, coverTagline2.innerText);
   console.log(currentCover, "Current Cover");
 };
-// function loadRandomCover() {
-//   loadRandomImage();
-//   loadRandomTitle();
-//   loadRandomTagline();
-// }
-//Every time the user clicks the Show New Random Cover button, a new random cover is created ---> var currentCover; (instance)
-//create an event listener for the Show New Random Cover Button (click, createCover)
-
-
-// hint: you may need to update the value of the provided currentCover variable
-// hint: use that Cover class!
-
+function loadRandomCover() {
+  loadRandomImage();
+  loadRandomTitle();
+  loadRandomTagline1();
+  loadRandomTagline2();
+};
