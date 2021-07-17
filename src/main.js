@@ -12,7 +12,7 @@ var saveCoverButton = document.querySelector('.save-cover-button');
 
 var formView = document.querySelector('.form-view');
 var homeView = document.querySelector('.home-view');
-
+// missing savedCoversView selector from vsc branch
 
 // We've provided a few variables below
 var savedCovers = [
@@ -25,6 +25,7 @@ window.addEventListener('load', loadRandomCover);
 randomCoverButton.addEventListener('click', loadRandomCover);
 randomCoverButton.addEventListener('click', createCover);
 makeNewButton.addEventListener('click', changeToFormView);
+homeButton.addEventListener('click', changeToHomeView);
 
 // Create your event handlers and other functions here 👇
 
@@ -60,11 +61,21 @@ function loadRandomCover() {
   loadRandomTagline2();
 };
 function changeToFormView() {
-  formView.classList.remove("hidden");
   homeView.classList.add("hidden");
   randomCoverButton.classList.add("hidden");
   saveCoverButton.classList.add("hidden");
+  formView.classList.remove("hidden");
   homeButton.classList.remove("hidden");
+};
+
+// missing changeToSavedCoversView from vsc branch
+
+function changeToHomeView() {
+  formView.classList.add("hidden");
+  homeButton.classList.add("hidden");
+  homeView.classList.remove("hidden");
+  randomCoverButton.classList.remove("hidden");
+  saveCoverButton.classList.remove("hidden");
 };
 
 // Is there a way to make hover behavior static using only JS?
