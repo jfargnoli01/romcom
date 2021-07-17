@@ -37,7 +37,7 @@ randomCoverButton.addEventListener('click', createCover);
 makeNewButton.addEventListener('click', changeToFormView);
 viewSavedButton.addEventListener('click', changeToSavedPostersView);
 homeButton.addEventListener('click', changeToHomeView);
-createNewBookButton.addEventListener('click', storeNewBookInput);
+createNewBookButton.addEventListener('click', storeAndChangeHome);
 
 
 // Create your event handlers and other functions here 👇
@@ -123,9 +123,7 @@ function displaySavedCovers() {
   // miniCover.style.backgroundImage = `"url('${savedCovers[0].cover}')"`;
 };
 
-function storeNewBookInput(event) {
-  event.preventDefault()
-  
+function storeNewBookInput() {
   var userCoverValue = document.querySelector(".user-cover").value;
   var userTitleValue = document.querySelector(".user-title").value;
   var userDesc1Value = document.querySelector(".user-desc1").value;
@@ -136,10 +134,19 @@ function storeNewBookInput(event) {
   descriptors.push(userDesc1Value, userDesc2Value);
 
   var userSavedCover = new Cover(userCoverValue, userTitleValue, userDesc1Value, userDesc2Value);
-  console.log(userSavedCover);
+  
+  coverImage.src = userCoverValue;
+  coverTitle.innerText = userTitleValue;
+  coverTagline1.innerText = userDesc1Value;
+  coverTagline2.innerText = userDesc2Value;
 };
 
+function storeAndChangeHome(event) {
+  event.preventDefault();
 
+  storeNewBookInput();
+  changeToHomeView();
+};
 
 // Is there a way to make hover behavior static using only JS?
 // If so, could be applied to last clicked button - apply to iteration 2
