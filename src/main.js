@@ -66,3 +66,6 @@ function changeToFormView() {
   saveCoverButton.classList.add("hidden");
   homeButton.classList.remove("hidden");
 };
+
+// Is there a way to make hover behavior static using only JS?
+// If so, could be applied to last clicked button - apply to iteration 2
