@@ -11,6 +11,7 @@ var homeButton = document.querySelector('.home-button');
 var randomCoverButton = document.querySelector('.random-cover-button');
 var saveCoverButton = document.querySelector('.save-cover-button');
 var viewSavedButton = document.querySelector('.view-saved-button');
+var createNewBookButton = document.querySelector('.create-new-book-button');
 
 var formView = document.querySelector('.form-view');
 var homeView = document.querySelector('.home-view');
@@ -36,6 +37,9 @@ randomCoverButton.addEventListener('click', createCover);
 makeNewButton.addEventListener('click', changeToFormView);
 viewSavedButton.addEventListener('click', changeToSavedPostersView);
 homeButton.addEventListener('click', changeToHomeView);
+createNewBookButton.addEventListener('click', storeNewBookInput);
+
+
 // Create your event handlers and other functions here 👇
 
 
@@ -124,8 +128,18 @@ function displaySavedCovers() {
   // miniCover.style.backgroundImage = `"url('${savedCovers[0].cover}')"`;
 };
 
+function storeNewBookInput(event) {
+  event.preventDefault()
 
+  var userCoverValue = document.querySelector(".user-cover").value;
+  var userTitleValue = document.querySelector(".user-title").value;
+  var userDesc1Value = document.querySelector(".user-desc1").value;
+  var userDesc2Value = document.querySelector(".user-desc2").value;
 
+  covers.push(userCoverValue);
+  titles.push(userTitleValue);
+  descriptors.push(userDesc1Value, userDesc2Value);
+};
 
 
 // savedCovers[i].cover
