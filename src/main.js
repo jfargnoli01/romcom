@@ -86,9 +86,10 @@ function changeToSavedPostersView() {
 
 function displaySavedCovers() {
   // mainCoversavedCovers[i].tagline2.classList.remove("main-cover");
+  // savedCoversSection.innerHTML = "";
   savedCoversSection.innerHTML = `
   <section class="mini-cover">
-  <img src=${savedCovers[0].cover}>
+  <img class="cover-image" src=${savedCovers[0].cover}>
   <h2 class="cover-title">${savedCovers[0].title}</h2>
   <h3 class="tagline">A tale of ${savedCovers[0].tagline1} and ${savedCovers[0].tagline2}</h3>
   </section>
