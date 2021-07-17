@@ -134,7 +134,11 @@ function storeNewBookInput() {
   descriptors.push(userDesc1Value, userDesc2Value);
 
   var userSavedCover = new Cover(userCoverValue, userTitleValue, userDesc1Value, userDesc2Value);
-  console.log(userSavedCover);
+  
+  coverImage.src = userCoverValue;
+  coverTitle.innerText = userTitleValue;
+  coverTagline1.innerText = userDesc1Value;
+  coverTagline2.innerText = userDesc2Value;
 };
 
 function storeAndChangeHome(event) {
