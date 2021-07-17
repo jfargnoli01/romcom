@@ -3,8 +3,13 @@ var coverImage = document.querySelector('.cover-image');
 var coverTitle = document.querySelector('.cover-title');
 var coverTagline1 = document.querySelector('.tagline-1');
 var coverTagline2 = document.querySelector('.tagline-2');
+
 var randomCoverButton = document.querySelector('.random-cover-button');
 var makeNewButton = document.querySelector('.make-new-button');
+var homeButton = document.querySelector('.home-button');
+var randomCoverButton = document.querySelector('.random-cover-button');
+var saveCoverButton = document.querySelector('.save-cover-button');
+
 var formView = document.querySelector('.form-view');
 var homeView = document.querySelector('.home-view');
 
@@ -57,4 +62,7 @@ function loadRandomCover() {
 function changeToFormView() {
   formView.classList.remove("hidden");
   homeView.classList.add("hidden");
+  randomCoverButton.classList.add("hidden");
+  saveCoverButton.classList.add("hidden");
+  homeButton.classList.remove("hidden");
 };
