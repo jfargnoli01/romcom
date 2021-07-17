@@ -3,7 +3,15 @@ var coverImage = document.querySelector('.cover-image');
 var coverTitle = document.querySelector('.cover-title');
 var coverTagline1 = document.querySelector('.tagline-1');
 var coverTagline2 = document.querySelector('.tagline-2');
+
 var randomCoverButton = document.querySelector('.random-cover-button');
+var makeNewButton = document.querySelector('.make-new-button');
+var homeButton = document.querySelector('.home-button');
+var randomCoverButton = document.querySelector('.random-cover-button');
+var saveCoverButton = document.querySelector('.save-cover-button');
+
+var formView = document.querySelector('.form-view');
+var homeView = document.querySelector('.home-view');
 
 
 // We've provided a few variables below
@@ -16,6 +24,7 @@ var currentCover;
 window.addEventListener('load', loadRandomCover);
 randomCoverButton.addEventListener('click', loadRandomCover);
 randomCoverButton.addEventListener('click', createCover);
+makeNewButton.addEventListener('click', changeToFormView);
 
 // Create your event handlers and other functions here 👇
 
@@ -50,3 +59,13 @@ function loadRandomCover() {
   loadRandomTagline1();
   loadRandomTagline2();
 };
+function changeToFormView() {
+  formView.classList.remove("hidden");
+  homeView.classList.add("hidden");
+  randomCoverButton.classList.add("hidden");
+  saveCoverButton.classList.add("hidden");
+  homeButton.classList.remove("hidden");
+};
+
+// Is there a way to make hover behavior static using only JS?
+// If so, could be applied to last clicked button - apply to iteration 2
