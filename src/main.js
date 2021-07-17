@@ -47,32 +47,39 @@ createNewBookButton.addEventListener('click', storeNewBookInput);
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 };
+
 function loadRandomImage() {
   var coversIndex = getRandomIndex(covers);
   coverImage.src = covers[coversIndex];
 };
+
 function loadRandomTitle() {
   var titlesIndex = getRandomIndex(titles);
   coverTitle.innerText = titles[titlesIndex];
 };
+
 function loadRandomTagline1() {
   var taglineIndex1 = getRandomIndex(descriptors);
   coverTagline1.innerText = descriptors[taglineIndex1];
 };
+
 function loadRandomTagline2() {
   var taglineIndex2 = getRandomIndex(descriptors);
   coverTagline2.innerText = descriptors[taglineIndex2];
-}
+};
+
 function createCover() {
   currentCover = new Cover(coverImage.src, coverTitle.innerText, coverTagline1.innerText, coverTagline2.innerText);
   console.log(currentCover, "Current Cover");
 };
+
 function loadRandomCover() {
   loadRandomImage();
   loadRandomTitle();
   loadRandomTagline1();
   loadRandomTagline2();
 };
+
 function changeToFormView() {
   homeView.classList.add("hidden");
   savedView.classList.add("hidden");
@@ -81,6 +88,7 @@ function changeToFormView() {
   formView.classList.remove("hidden");
   homeButton.classList.remove("hidden");
 };
+
 function changeToSavedPostersView() {
   formView.classList.add("hidden");
   homeView.classList.add("hidden");
@@ -90,22 +98,7 @@ function changeToSavedPostersView() {
   homeButton.classList.remove("hidden");
   displaySavedCovers();
 };
-function displaySavedCovers() {
-  // mainCoversavedCovers[i].tagline2.classList.remove("main-cover");
-  // savedCoversSection.innerHTML = "";
-  savedCoversSection.innerHTML = `
-  <section class="mini-cover">
-  <img class="cover-image" src=${savedCovers[0].cover}>
-  <h2 class="cover-title">${savedCovers[0].title}</h2>
-  <h3 class="tagline">A tale of ${savedCovers[0].tagline1} and ${savedCovers[0].tagline2}</h3>
-  </section>
-  `;
-  // miniCover.style.backgroundImage = `"url('${savedCovers[0].cover}')"`;
-};
-// savedCovers[i].cover
-// savedCovers[i].title
-// savedCovers[i].tagline1
-// savedCovers[i].tagline2
+
 function changeToHomeView() {
   formView.classList.add("hidden");
   savedView.classList.add("hidden");
@@ -116,21 +109,23 @@ function changeToHomeView() {
 };
 
 function displaySavedCovers() {
-  // mainCoversavedCovers[i].tagline2.classList.remove("main-cover");
   // savedCoversSection.innerHTML = "";
-  savedCoversSection.innerHTML = `
-  <section class="mini-cover">
-  <img class="cover-image" src=${savedCovers[0].cover}>
-  <h2 class="cover-title">${savedCovers[0].title}</h2>
-  <h3 class="tagline">A tale of ${savedCovers[0].tagline1} and ${savedCovers[0].tagline2}</h3>
-  </section>
-  `;
+  // for(var i = 0; i < savedCovers.length; i++) {}
+    savedCoversSection.innerHTML = `
+    <section class="mini-cover">
+    <img class="cover-image" src=${savedCovers[0].cover}>
+    <h2 class="cover-title">${savedCovers[0].title}</h2>
+    <h3 class="tagline">A tale of ${savedCovers[0].tagline1} and ${savedCovers[0].tagline2}</h3>
+    </section>
+    `;
+  
+//take input field info and create new object instance to then push into savedCovers[]
   // miniCover.style.backgroundImage = `"url('${savedCovers[0].cover}')"`;
 };
 
 function storeNewBookInput(event) {
   event.preventDefault()
-
+  
   var userCoverValue = document.querySelector(".user-cover").value;
   var userTitleValue = document.querySelector(".user-title").value;
   var userDesc1Value = document.querySelector(".user-desc1").value;
@@ -139,13 +134,12 @@ function storeNewBookInput(event) {
   covers.push(userCoverValue);
   titles.push(userTitleValue);
   descriptors.push(userDesc1Value, userDesc2Value);
+
+  var userSavedCover = new Cover(userCoverValue, userTitleValue, userDesc1Value, userDesc2Value);
+  console.log(userSavedCover);
 };
 
 
-// savedCovers[i].cover
-// savedCovers[i].title
-// savedCovers[i].tagline1
-// savedCovers[i].tagline2
 
 // Is there a way to make hover behavior static using only JS?
 // If so, could be applied to last clicked button - apply to iteration 2
