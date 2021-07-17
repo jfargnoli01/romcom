@@ -11,16 +11,15 @@ var homeButton = document.querySelector('.home-button');
 var randomCoverButton = document.querySelector('.random-cover-button');
 var saveCoverButton = document.querySelector('.save-cover-button');
 var viewSavedButton = document.querySelector('.view-saved-button');
-// Pages
+
 var formView = document.querySelector('.form-view');
 var homeView = document.querySelector('.home-view');
 var savedView = document.querySelector('.saved-view');
-// Cover sizes
+
 var mainCover = document.querySelector('.main-cover');
 var miniCover = document.querySelector('.mini-cover');
-// Saved covers section
+
 var savedCoversSection = document.querySelector(".saved-covers-section");
-// missing savedCoversView selector from vsc branch
 
 // We've provided a few variables below
 var savedCovers = [
@@ -111,6 +110,28 @@ function changeToHomeView() {
   randomCoverButton.classList.remove("hidden");
   saveCoverButton.classList.remove("hidden");
 };
+
+function displaySavedCovers() {
+  // mainCoversavedCovers[i].tagline2.classList.remove("main-cover");
+  // savedCoversSection.innerHTML = "";
+  savedCoversSection.innerHTML = `
+  <section class="mini-cover">
+  <img class="cover-image" src=${savedCovers[0].cover}>
+  <h2 class="cover-title">${savedCovers[0].title}</h2>
+  <h3 class="tagline">A tale of ${savedCovers[0].tagline1} and ${savedCovers[0].tagline2}</h3>
+  </section>
+  `;
+  // miniCover.style.backgroundImage = `"url('${savedCovers[0].cover}')"`;
+};
+
+
+
+
+
+// savedCovers[i].cover
+// savedCovers[i].title
+// savedCovers[i].tagline1
+// savedCovers[i].tagline2
 
 // Is there a way to make hover behavior static using only JS?
 // If so, could be applied to last clicked button - apply to iteration 2
