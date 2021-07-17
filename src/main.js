@@ -1,17 +1,25 @@
 // Create variables targetting the relevant DOM elements here 👇
+// Cover elements
 var coverImage = document.querySelector('.cover-image');
 var coverTitle = document.querySelector('.cover-title');
 var coverTagline1 = document.querySelector('.tagline-1');
 var coverTagline2 = document.querySelector('.tagline-2');
-
+// Buttons
 var randomCoverButton = document.querySelector('.random-cover-button');
 var makeNewButton = document.querySelector('.make-new-button');
 var homeButton = document.querySelector('.home-button');
 var randomCoverButton = document.querySelector('.random-cover-button');
 var saveCoverButton = document.querySelector('.save-cover-button');
-
+var viewSavedButton = document.querySelector('.view-saved-button');
+// Pages
 var formView = document.querySelector('.form-view');
 var homeView = document.querySelector('.home-view');
+var savedView = document.querySelector('.saved-view');
+// Cover sizes
+var mainCover = document.querySelector('.main-cover');
+var miniCover = document.querySelector('.mini-cover');
+// Saved covers section
+var savedCoversSection = document.querySelector(".saved-covers-section");
 // missing savedCoversView selector from vsc branch
 
 // We've provided a few variables below
@@ -21,12 +29,14 @@ var savedCovers = [
 var currentCover;
 
 // Add your event listeners here 👇
+// Page load
 window.addEventListener('load', loadRandomCover);
+// Buttons
 randomCoverButton.addEventListener('click', loadRandomCover);
 randomCoverButton.addEventListener('click', createCover);
 makeNewButton.addEventListener('click', changeToFormView);
+viewSavedButton.addEventListener('click', changeToSavedPostersView);
 homeButton.addEventListener('click', changeToHomeView);
-
 // Create your event handlers and other functions here 👇
 
 
@@ -62,16 +72,40 @@ function loadRandomCover() {
 };
 function changeToFormView() {
   homeView.classList.add("hidden");
+  savedView.classList.add("hidden");
   randomCoverButton.classList.add("hidden");
   saveCoverButton.classList.add("hidden");
   formView.classList.remove("hidden");
   homeButton.classList.remove("hidden");
 };
-
-// missing changeToSavedCoversView from vsc branch
-
+function changeToSavedPostersView() {
+  formView.classList.add("hidden");
+  homeView.classList.add("hidden");
+  randomCoverButton.classList.add("hidden");
+  saveCoverButton.classList.add("hidden");
+  savedView.classList.remove("hidden");
+  homeButton.classList.remove("hidden");
+  displaySavedCovers();
+};
+function displaySavedCovers() {
+  // mainCoversavedCovers[i].tagline2.classList.remove("main-cover");
+  // savedCoversSection.innerHTML = "";
+  savedCoversSection.innerHTML = `
+  <section class="mini-cover">
+  <img class="cover-image" src=${savedCovers[0].cover}>
+  <h2 class="cover-title">${savedCovers[0].title}</h2>
+  <h3 class="tagline">A tale of ${savedCovers[0].tagline1} and ${savedCovers[0].tagline2}</h3>
+  </section>
+  `;
+  // miniCover.style.backgroundImage = `"url('${savedCovers[0].cover}')"`;
+};
+// savedCovers[i].cover
+// savedCovers[i].title
+// savedCovers[i].tagline1
+// savedCovers[i].tagline2
 function changeToHomeView() {
   formView.classList.add("hidden");
+  savedView.classList.add("hidden");
   homeButton.classList.add("hidden");
   homeView.classList.remove("hidden");
   randomCoverButton.classList.remove("hidden");
