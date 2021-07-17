@@ -1,9 +1,10 @@
 // Create variables targetting the relevant DOM elements here 👇
+// Cover elements
 var coverImage = document.querySelector('.cover-image');
 var coverTitle = document.querySelector('.cover-title');
 var coverTagline1 = document.querySelector('.tagline-1');
 var coverTagline2 = document.querySelector('.tagline-2');
-
+// Buttons
 var randomCoverButton = document.querySelector('.random-cover-button');
 var makeNewButton = document.querySelector('.make-new-button');
 var homeButton = document.querySelector('.home-button');
@@ -27,12 +28,14 @@ var savedCovers = [
 var currentCover;
 
 // Add your event listeners here 👇
+// Page load
 window.addEventListener('load', loadRandomCover);
+// Buttons
 randomCoverButton.addEventListener('click', loadRandomCover);
 randomCoverButton.addEventListener('click', createCover);
 makeNewButton.addEventListener('click', changeToFormView);
 viewSavedButton.addEventListener('click', changeToSavedPostersView);
-
+homeButton.addEventListener('click', changeToHomeView);
 // Create your event handlers and other functions here 👇
 
 
@@ -82,6 +85,30 @@ function changeToSavedPostersView() {
   savedView.classList.remove("hidden");
   homeButton.classList.remove("hidden");
   displaySavedCovers();
+};
+function displaySavedCovers() {
+  // mainCoversavedCovers[i].tagline2.classList.remove("main-cover");
+  // savedCoversSection.innerHTML = "";
+  savedCoversSection.innerHTML = `
+  <section class="mini-cover">
+  <img class="cover-image" src=${savedCovers[0].cover}>
+  <h2 class="cover-title">${savedCovers[0].title}</h2>
+  <h3 class="tagline">A tale of ${savedCovers[0].tagline1} and ${savedCovers[0].tagline2}</h3>
+  </section>
+  `;
+  // miniCover.style.backgroundImage = `"url('${savedCovers[0].cover}')"`;
+};
+// savedCovers[i].cover
+// savedCovers[i].title
+// savedCovers[i].tagline1
+// savedCovers[i].tagline2
+function changeToHomeView() {
+  formView.classList.add("hidden");
+  savedView.classList.add("hidden");
+  homeButton.classList.add("hidden");
+  homeView.classList.remove("hidden");
+  randomCoverButton.classList.remove("hidden");
+  saveCoverButton.classList.remove("hidden");
 };
 
 function displaySavedCovers() {
