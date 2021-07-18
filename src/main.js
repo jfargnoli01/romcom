@@ -139,7 +139,8 @@ function storeNewBookInput() {
   titles.push(userTitleValue.value);
   descriptors.push(userDesc1Value.value, userDesc2Value.value);
 
-  var userSavedCover = new Cover(userCoverValue.value, userTitleValue.value, userDesc1Value.value, userDesc2Value.value);
+// Do we need this object?
+  var userBookCover = new Cover(userCoverValue.value, userTitleValue.value, userDesc1Value.value, userDesc2Value.value);
 
   coverImage.src = userCoverValue.value;
   coverTitle.innerText = userTitleValue.value;
@@ -155,13 +156,15 @@ function storeAndChangeHome(event) {
 };
 
 function addToSavedCovers() {
-  var userSavedCover = new Cover(userCoverValue.value, userTitleValue.value, userDesc1Value.value, userDesc2Value.value);
+// update arguments to be passed from main cover elements instead of user input fields
+  // var userSavedCover = new Cover(userCoverValue.value, userTitleValue.value, userDesc1Value.value, userDesc2Value.value);
+  var displayedCover = new Cover(coverImage.src, coverTitle.innerText, coverTagline1.innerText, coverTagline2.innerText);
 
   for (var i = 0; i < savedCovers.length; i++) {
-    if (savedCovers[i].cover === userSavedCover.cover && savedCovers[i].title === userSavedCover.title && savedCovers[i].tagline1 === userSavedCover.tagline1 && savedCovers[i].tagline2 === userSavedCover.tagline2) {
+    if (savedCovers[i].cover === displayedCover.cover && savedCovers[i].title === displayedCover.title && savedCovers[i].tagline1 === displayedCover.tagline1 && savedCovers[i].tagline2 === displayedCover.tagline2) {
       return;
     }
   }
-  savedCovers.push(userSavedCover);
+  savedCovers.push(displayedCover);
   console.log(savedCovers);
 }
