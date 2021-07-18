@@ -115,15 +115,15 @@ function changeToHomeView() {
 };
 
 function displaySavedCovers() {
-  // savedCoversSection.innerHTML = "";
-  // for(var i = 0; i < savedCovers.length; i++) {}
-    savedCoversSection.innerHTML = `
+  for(var i = 0; i < savedCovers.length; i++) {
+    savedCoversSection.innerHTML += `
     <section class="mini-cover">
-    <img class="cover-image" src=${savedCovers[0].cover}>
-    <h2 class="cover-title">${savedCovers[0].title}</h2>
-    <h3 class="tagline">A tale of ${savedCovers[0].tagline1} and ${savedCovers[0].tagline2}</h3>
+    <img class="cover-image" src=${savedCovers[i].cover}>
+    <h2 class="cover-title">${savedCovers[i].title}</h2>
+    <h3 class="tagline">A tale of ${savedCovers[i].tagline1} and ${savedCovers[i].tagline2}</h3>
     </section>
     `;
+  };
 };
 
 function storeNewBookInput() {
