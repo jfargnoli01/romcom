@@ -22,6 +22,11 @@ var miniCover = document.querySelector('.mini-cover');
 
 var savedCoversSection = document.querySelector(".saved-covers-section");
 
+var userCoverValue = document.querySelector(".user-cover");
+var userTitleValue = document.querySelector(".user-title");
+var userDesc1Value = document.querySelector(".user-desc1");
+var userDesc2Value = document.querySelector(".user-desc2");
+
 // We've provided a few variables below
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
@@ -35,6 +40,7 @@ window.addEventListener('load', loadRandomCover);
 randomCoverButton.addEventListener('click', loadRandomCover);
 randomCoverButton.addEventListener('click', createCover);
 makeNewButton.addEventListener('click', changeToFormView);
+saveCoverButton.addEventListener('click', addToSavedCovers);
 viewSavedButton.addEventListener('click', changeToSavedPostersView);
 homeButton.addEventListener('click', changeToHomeView);
 createNewBookButton.addEventListener('click', storeAndChangeHome);
@@ -118,27 +124,17 @@ function displaySavedCovers() {
     <h3 class="tagline">A tale of ${savedCovers[0].tagline1} and ${savedCovers[0].tagline2}</h3>
     </section>
     `;
-  
-//take input field info and create new object instance to then push into savedCovers[]
-  // miniCover.style.backgroundImage = `"url('${savedCovers[0].cover}')"`;
 };
 
 function storeNewBookInput() {
-  var userCoverValue = document.querySelector(".user-cover").value;
-  var userTitleValue = document.querySelector(".user-title").value;
-  var userDesc1Value = document.querySelector(".user-desc1").value;
-  var userDesc2Value = document.querySelector(".user-desc2").value;
+  covers.push(userCoverValue.value);
+  titles.push(userTitleValue.value);
+  descriptors.push(userDesc1Value.value, userDesc2Value.value);
 
-  covers.push(userCoverValue);
-  titles.push(userTitleValue);
-  descriptors.push(userDesc1Value, userDesc2Value);
-
-  var userSavedCover = new Cover(userCoverValue, userTitleValue, userDesc1Value, userDesc2Value);
-  
-  coverImage.src = userCoverValue;
-  coverTitle.innerText = userTitleValue;
-  coverTagline1.innerText = userDesc1Value;
-  coverTagline2.innerText = userDesc2Value;
+  coverImage.src = userCoverValue.value;
+  coverTitle.innerText = userTitleValue.value;
+  coverTagline1.innerText = userDesc1Value.value;
+  coverTagline2.innerText = userDesc2Value.value;
 };
 
 function storeAndChangeHome(event) {
@@ -148,5 +144,14 @@ function storeAndChangeHome(event) {
   changeToHomeView();
 };
 
-// Is there a way to make hover behavior static using only JS?
-// If so, could be applied to last clicked button - apply to iteration 2
+function addToSavedCovers() {
+  var displayedCover = new Cover(coverImage.src, coverTitle.innerText, coverTagline1.innerText, coverTagline2.innerText);
+
+  for (var i = 0; i < savedCovers.length; i++) {
+    if (savedCovers[i].cover === displayedCover.cover && savedCovers[i].title === displayedCover.title && savedCovers[i].tagline1 === displayedCover.tagline1 && savedCovers[i].tagline2 === displayedCover.tagline2) {
+      return;
+    }
+  }
+  savedCovers.push(displayedCover);
+  console.log(savedCovers);
+}
