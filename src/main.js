@@ -124,23 +124,12 @@ function displaySavedCovers() {
     <h3 class="tagline">A tale of ${savedCovers[0].tagline1} and ${savedCovers[0].tagline2}</h3>
     </section>
     `;
-
-//take input field info and create new object instance to then push into savedCovers[]
-  // miniCover.style.backgroundImage = `"url('${savedCovers[0].cover}')"`;
 };
 
 function storeNewBookInput() {
-  // var userCoverValue = document.querySelector(".user-cover").value;
-  // var userTitleValue = document.querySelector(".user-title").value;
-  // var userDesc1Value = document.querySelector(".user-desc1").value;
-  // var userDesc2Value = document.querySelector(".user-desc2").value;
-
   covers.push(userCoverValue.value);
   titles.push(userTitleValue.value);
   descriptors.push(userDesc1Value.value, userDesc2Value.value);
-
-// Do we need this object?
-  var userBookCover = new Cover(userCoverValue.value, userTitleValue.value, userDesc1Value.value, userDesc2Value.value);
 
   coverImage.src = userCoverValue.value;
   coverTitle.innerText = userTitleValue.value;
@@ -156,8 +145,6 @@ function storeAndChangeHome(event) {
 };
 
 function addToSavedCovers() {
-// update arguments to be passed from main cover elements instead of user input fields
-  // var userSavedCover = new Cover(userCoverValue.value, userTitleValue.value, userDesc1Value.value, userDesc2Value.value);
   var displayedCover = new Cover(coverImage.src, coverTitle.innerText, coverTagline1.innerText, coverTagline2.innerText);
 
   for (var i = 0; i < savedCovers.length; i++) {
