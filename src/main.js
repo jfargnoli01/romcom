@@ -157,10 +157,11 @@ function storeAndChangeHome(event) {
 function addToSavedCovers() {
   var userSavedCover = new Cover(userCoverValue.value, userTitleValue.value, userDesc1Value.value, userDesc2Value.value);
 
+  for (var i = 0; i < savedCovers.length; i++) {
+    if (savedCovers[i].cover === userSavedCover.cover && savedCovers[i].title === userSavedCover.title && savedCovers[i].tagline1 === userSavedCover.tagline1 && savedCovers[i].tagline2 === userSavedCover.tagline2) {
+      return;
+    }
+  }
   savedCovers.push(userSavedCover);
-
   console.log(savedCovers);
-};
-
-// Is there a way to make hover behavior static using only JS?
-// If so, could be applied to last clicked button - apply to iteration 2
+}
