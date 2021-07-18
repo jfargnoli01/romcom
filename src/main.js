@@ -118,7 +118,7 @@ function displaySavedCovers() {
     <h3 class="tagline">A tale of ${savedCovers[0].tagline1} and ${savedCovers[0].tagline2}</h3>
     </section>
     `;
-  
+
 //take input field info and create new object instance to then push into savedCovers[]
   // miniCover.style.backgroundImage = `"url('${savedCovers[0].cover}')"`;
 };
@@ -134,11 +134,15 @@ function storeNewBookInput() {
   descriptors.push(userDesc1Value, userDesc2Value);
 
   var userSavedCover = new Cover(userCoverValue, userTitleValue, userDesc1Value, userDesc2Value);
-  
+
   coverImage.src = userCoverValue;
   coverTitle.innerText = userTitleValue;
   coverTagline1.innerText = userDesc1Value;
   coverTagline2.innerText = userDesc2Value;
+
+  savedCovers.push(userSavedCover);
+
+  console.log(savedCovers);
 };
 
 function storeAndChangeHome(event) {
