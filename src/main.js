@@ -93,6 +93,8 @@ function changeToFormView() {
   saveCoverButton.classList.add("hidden");
   formView.classList.remove("hidden");
   homeButton.classList.remove("hidden");
+
+  viewSavedButton.disabled = false;
 };
 
 function changeToSavedPostersView() {
@@ -102,7 +104,8 @@ function changeToSavedPostersView() {
   saveCoverButton.classList.add("hidden");
   savedView.classList.remove("hidden");
   homeButton.classList.remove("hidden");
-  displaySavedCovers();
+
+  viewSavedButton.disabled = true;
 };
 
 function changeToHomeView() {
@@ -112,18 +115,21 @@ function changeToHomeView() {
   homeView.classList.remove("hidden");
   randomCoverButton.classList.remove("hidden");
   saveCoverButton.classList.remove("hidden");
+
+  viewSavedButton.disabled = false;
 };
 
 function displaySavedCovers() {
+  savedCoversSection.innerHTML = "";
   for(var i = 0; i < savedCovers.length; i++) {
     savedCoversSection.innerHTML += `
-    <section class="mini-cover">
-    <img class="cover-image" src=${savedCovers[i].cover}>
-    <h2 class="cover-title">${savedCovers[i].title}</h2>
-    <h3 class="tagline">A tale of ${savedCovers[i].tagline1} and ${savedCovers[i].tagline2}</h3>
-    </section>
-    `;
-  };
+      <section class="mini-cover">
+      <img class="cover-image" src=${savedCovers[i].cover}>
+      <h2 class="cover-title">${savedCovers[i].title}</h2>
+      <h3 class="tagline">A tale of ${savedCovers[i].tagline1} and ${savedCovers[i].tagline2}</h3>
+      </section>
+    `; 
+  }
 };
 
 function storeNewBookInput() {
@@ -153,5 +159,6 @@ function addToSavedCovers() {
     }
   }
   savedCovers.push(displayedCover);
+  displaySavedCovers();
   console.log(savedCovers);
 }
