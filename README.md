@@ -10,13 +10,13 @@ __Tech Stack__
 - CSS
 
 ## User Information
-The purpose of this application is to create unique romance novel covers including an image, title, and tageline that can be saved and deleted by user. 
+The purpose of this application is to create unique romance novel covers including an image, title, and tagline that can be saved and deleted by user. 
 
 ## How to Use Application
 - From home page, user can select Show New Random Cover to have a romance novel cover randomly generated
 - From home page, user can select Make Your Own Cover to input a specific url, title, first descriptor, and second descriptor into a form; They then select the Make my Book button to generate and display the new cover
-- If user chooses, they can save the cover by selecting the Save Cover button; This will add the cover to the View Saved Covers page;
-- User can then click the View Saved Covers button to display all saved covers;
+- If user chooses, they can save the cover by selecting the Save Cover button; This will add the cover to the View Saved Covers page
+- User can then click the View Saved Covers button to display all saved covers
 - From the View Saved Covers page, the usser can double-click a cover to delete it
 
 ## Future Features
