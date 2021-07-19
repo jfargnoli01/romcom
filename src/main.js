@@ -1,10 +1,10 @@
 // Create variables targetting the relevant DOM elements here 👇
-// Cover elements
+
 var coverImage = document.querySelector('.cover-image');
 var coverTitle = document.querySelector('.cover-title');
 var coverTagline1 = document.querySelector('.tagline-1');
 var coverTagline2 = document.querySelector('.tagline-2');
-// Buttons
+
 var randomCoverButton = document.querySelector('.random-cover-button');
 var makeNewButton = document.querySelector('.make-new-button');
 var homeButton = document.querySelector('.home-button');
@@ -28,15 +28,16 @@ var userDesc1Value = document.querySelector(".user-desc1");
 var userDesc2Value = document.querySelector(".user-desc2");
 
 // We've provided a few variables below
+
 var savedCovers = [
   new Cover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
 var currentCover;
 
 // Add your event listeners here 👇
-// Page load
+
 window.addEventListener('load', loadRandomCover);
-// Buttons
+
 randomCoverButton.addEventListener('click', loadRandomCover);
 randomCoverButton.addEventListener('click', createCover);
 makeNewButton.addEventListener('click', changeToFormView);
@@ -45,11 +46,10 @@ viewSavedButton.addEventListener('click', changeToSavedPostersView);
 homeButton.addEventListener('click', changeToHomeView);
 createNewBookButton.addEventListener('click', storeAndChangeHome);
 
+savedCoversSection.addEventListener('dblclick', deleteCover);
 
 // Create your event handlers and other functions here 👇
 
-
-// We've provided one function to get you started
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 };
@@ -76,7 +76,6 @@ function loadRandomTagline2() {
 
 function createCover() {
   currentCover = new Cover(coverImage.src, coverTitle.innerText, coverTagline1.innerText, coverTagline2.innerText);
-  console.log(currentCover, "Current Cover");
 };
 
 function loadRandomCover() {
@@ -158,7 +157,16 @@ function addToSavedCovers() {
       return;
     }
   }
+
   savedCovers.push(displayedCover);
   displaySavedCovers();
-  console.log(savedCovers);
-}
+};
+
+function deleteCover(event) {
+  for(var i = 0; i < savedCovers.length; i++) {
+    if(savedCovers[i].cover === event.target.closest(".mini-cover").children[0].src && savedCovers[i].title === event.target.closest(".mini-cover").children[1].innerText) {
+      savedCovers.splice(i, 1);
+    }
+  };
+  displaySavedCovers();
+};
