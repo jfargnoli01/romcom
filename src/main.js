@@ -161,36 +161,17 @@ function addToSavedCovers() {
       return;
     }
   }
-
-  //make another loop
-  // use inlcudes to see if object matches 
-  //if yes, use splice to remove obj from array
-  // function deleteCover() {
-  //   savedCovers.splice(savedCovers.indexOf(displayedCover), 1);
-  //   displaySavedCovers();
-  // };
-
+  
   savedCovers.push(displayedCover);
   displaySavedCovers();
   console.log(savedCovers);
 };
 
 function deleteCover(event) {
-  // savedCovers.splice(savedCovers.indexOf(displayedCover), 1);
-  // displaySavedCovers();
-
-  // passing dbl click event to target, on dbl click, we are targeting saved covers section then 
-  //returning closest parent element to section
-  // .mini-cover; then returning the child elements in an array ; 
-  //then access first element in array and return its src prop to compare to each item 
-
   for(var i = 0; i < savedCovers.length; i++) {
-    if(savedCovers[i].cover === event.target.closest(".mini-cover").children[0].src) {
+    if(savedCovers[i].cover === event.target.closest(".mini-cover").children[0].src && savedCovers[i].title === event.target.closest(".mini-cover").children[1].innerText) {
       savedCovers.splice(i, 1);
     }
   };
   displaySavedCovers();
 };
-
-
-// console.log(event.target.closest(".mini-cover").children[0].src);
